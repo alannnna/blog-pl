@@ -15,5 +15,4 @@ the urls.
 
 Next steps would definitely be user authentication (for security reasons),
 scrolling through lists of posts from the post detail view (next entry/
-previous entry), and maybe blog post tags. I wasn't sure how long it would 
-take to set up my first Django project from scratch, so I kept it simple.
+previous entry), and maybe blog post tags.
