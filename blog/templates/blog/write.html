@@ -6,7 +6,7 @@
 		{% csrf_token %}
 		<h3>Compose Yourself.</h3><br />
 		<label for="posttitle">Title</label><input id="posttitle" type="text" name="post_title" class="form-control" placeholder="Title"/><br />
-		<label for="postcontent">Content</label><textarea id="postcontent" type="text" name="post_meat" class="form-control" placeholder="Compose your blog post here."></textarea><br />
+		<label for="postcontent">Content</label><textarea id="postcontent" type="text" name="post_meat" class="form-control" placeholder="Compose your blog post here." rows="10"></textarea><br />
 		<label for="postauthor">Author</label><input id="postauthor" type="text" name="post_author" class="form-control" placeholder="Leave a pen name."/>
 		    <br />
 		<div style="float: right;"><input type="submit" class="btn btn-default" value="Post Blog Entry" /></div>
