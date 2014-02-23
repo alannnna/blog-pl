@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <title>Bloggable</title>
+</head>
+
+<body>
+    <div id="header">
+        {% block header %}
+        <nav class="navbar navbar-default" role="navigation" style="background-color: #b92d6e;">
+            <a class="navbar-brand" style="color: white; font-weight: bold;" href="/">Bloggable</a>
+            <a class="navbar-brand" style="color: white;" href="/write/">Write Post</a>
+        </nav>
+        {% endblock %}
+    </div>
+
+    <div id="content" class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

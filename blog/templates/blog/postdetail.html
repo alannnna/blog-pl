@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center"><h3>{{ post.title }}</h3>
+<h5>by <a href="{% url 'indexByAuthor' post.author %}">{{ post.author }}</a></h5></div><br />
+{{ post.text|linebreaks }}
+<hr>
+
+{% if comments %}
+<h4 style="background-color: rgb(235, 235, 235); padding: 10px; border-radius: 4px;">Comments</h4><hr>
+{% for comment in comments %}
+	<b>{{ comment.author }}</b> says:<br />
+	{{ comment.text|linebreaks }}
+	<hr>
+{% endfor %}
+{% else %}
+<h4 style="background-color: rgb(235, 235, 235); padding: 10px; border-radius: 4px;">No comments yet.</h4><hr>
+{% endif %}
+
+<form action="{% url 'postComment' post.id %}" method="post">
+	<div class="form-group">
+		{% csrf_token %}
+		<h4>Leave a Comment.</h4>
+		<textarea type="text" name="comment_meat" class="form-control" placeholder="Comment"></textarea><br />
+		<input type="text" name="comment_author" class="form-control" placeholder="Author" />
+		    <br />
+		<input type="submit" class="btn btn-default" value="Post Comment" />
+	</div>
+</form>
+{% endblock %}

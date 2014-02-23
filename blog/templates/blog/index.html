@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>
+	{% if author %}
+		<a href="/">All Posts</a> &gt; Posts by {{ author }}
+	{% else %}
+		All Posts
+	{% endif %}
+</h3>
+<br />
+{% if page_of_posts %}
+    <table class="table table-hover">
+    	<colgroup>
+        	<col style="width: 20%;">
+    	    <col style="width: 60%;">
+        	<col style="width: 20%;">
+    	</colgroup>
+        {% for post in page_of_posts %}
+            <tr>
+            	<td>{{ post.pub_date }}</td>
+            	<td><a href="{% url 'postDetail' post.id %}">{{ post.title }}</a> by <a href="{% url 'indexByAuthor' post.author %}">{{ post.author }}</a></td>
+            	<td>{{ post.num_comments }} comments</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% if prev_page or next_page %}
+    	Page
+	    {% if prev_page %}
+	    	{% if author %}
+	    		<a href="{% url 'indexByAuthor' author prev_page %}">&lt;&lt; {{ prev_page }}</a>
+	    	{% else %}
+	    		<a href="{% url 'index' prev_page %}">&lt;&lt; {{ prev_page }}</a>
+	    	{% endif %}
+	    {% endif %}
+	    	{{ curr_page }}
+	    {% if next_page %}
+	    	{% if author %}
+	    		<a href="{% url 'indexByAuthor' author next_page %}">{{ next_page }} &gt;&gt;</a>
+	    	{% else %}
+	    		<a href="{% url 'index' next_page %}">{{ next_page }} &gt;&gt;</a>
+	    	{% endif %}
+	    {% endif %}
+    {% endif %}
+{% else %}
+    No blog posts here!
+{% endif %}
+{% endblock %}
